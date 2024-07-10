@@ -1,0 +1,249 @@
+
+//MEMASUKKAN GAMBAR DATA LATIH
+gambar = imread('jeruk-1.png');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,1) = warna(1);
+data_latih(2,1) = warna(2);
+data_latih(3,1) = warna(3);
+
+gambar = imread('jeruk-2.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,2) = warna(1);
+data_latih(2,2) = warna(2);
+data_latih(3,2) = warna(3);
+
+gambar = imread('jeruk-3.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,3) = warna(1);
+data_latih(2,3) = warna(2);
+data_latih(3,3) = warna(3);
+
+gambar = imread('jeruk-4.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,4) = warna(1);
+data_latih(2,4) = warna(2);
+data_latih(3,4) = warna(3);
+
+gambar = imread('jeruk-5.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,5) = warna(1);
+data_latih(2,5) = warna(2);
+data_latih(3,5) = warna(3);
+
+gambar = imread('naga-1.png');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,6) = warna(1);
+data_latih(2,6) = warna(2);
+data_latih(3,6) = warna(3);
+
+gambar = imread('naga-2.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,7) = warna(1);
+data_latih(2,7) = warna(2);
+data_latih(3,7) = warna(3);
+
+gambar = imread('naga-3.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,8) = warna(1);
+data_latih(2,8) = warna(2);
+data_latih(3,8) = warna(3);
+
+gambar = imread('naga-4.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,9) = warna(1);
+data_latih(2,9) = warna(2);
+data_latih(3,9) = warna(3);
+
+gambar = imread('naga-5.png');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,10) = warna(1);
+data_latih(2,10) = warna(2);
+data_latih(3,10) = warna(3);
+
+gambar = imread('sirsak-1.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,11) = warna(1);
+data_latih(2,11) = warna(2);
+data_latih(3,11) = warna(3);
+
+gambar = imread('sirsak-2.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,12) = warna(1);
+data_latih(2,12) = warna(2);
+data_latih(3,12) = warna(3);
+
+gambar = imread('sirsak-3.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,13) = warna(1);
+data_latih(2,13) = warna(2);
+data_latih(3,13) = warna(3);
+
+gambar = imread('sirsak-4.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,14) = warna(1);
+data_latih(2,14) = warna(2);
+data_latih(3,14) = warna(3);
+
+gambar = imread('sirsak-5.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_latih(1,15) = warna(1);
+data_latih(2,15) = warna(2);
+data_latih(3,15) = warna(3);
+
+
+
+
+
+
+
+
+//MENGUJI ALGORITMA BACKPROPAGATION DATA LATIH DAN MELIHAT JARINGAN NEURON
+netl = newff(minmax(data_latih), [45,3], {'logsig', 'logsig'}, 'traincgp');
+init(netl);
+netl.trainParam.epochs = 10000;
+netl.trainParam.goal = 0.0000001;
+
+tic;
+netl = train(netl, data_latih, target);
+waktu_training = toc;
+
+hasil = sim(netl, data_latih);
+hasil;
+hasil
+
+
+
+
+
+
+//MEMASUKKAN GAMBAR DATA UJI
+gambar = imread('jeruk-uji-1.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_uji(1,1) = warna(1);
+data_uji(2,1) = warna(2);
+data_uji(3,1) = warna(3);
+
+gambar = imread('jeruk-uji-2.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_uji(1,2) = warna(1);
+data_uji(2,2) = warna(2);
+data_uji(3,2) = warna(3);
+
+gambar = imread('jeruk-uji-3.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_uji(1,3) = warna(1);
+data_uji(2,3) = warna(2);
+data_uji(3,3) = warna(3);
+
+gambar = imread('naga-uji-1.png');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_uji(1,4) = warna(1);
+data_uji(2,4) = warna(2);
+data_uji(3,4) = warna(3);
+
+gambar = imread('naga-uji-2.png');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_uji(1,5) = warna(1);
+data_uji(2,5) = warna(2);
+data_uji(3,5) = warna(3);
+
+gambar = imread('naga-uji-3.png');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_uji(1,6) = warna(1);
+data_uji(2,6) = warna(2);
+data_uji(3,6) = warna(3);
+
+gambar = imread('sirsak-uji-1.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_uji(1,7) = warna(1);
+data_uji(2,7) = warna(2);
+data_uji(3,7) = warna(3);
+
+gambar = imread('sirsak-uji-2.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_uji(1,8) = warna(1);
+data_uji(2,8) = warna(2);
+data_uji(3,8) = warna(3);
+
+gambar = imread('sirsak-uji-3.jpg');
+suml = sum(sum(gambar));
+ukuran = size(gambar);
+warna = suml./( ukuran(1) * ukuran(2) );
+
+data_uji(1,9) = warna(1);
+data_uji(2,9) = warna(2);
+data_uji(3,9) = warna(3);
+
+
+//MENGUJI ALGORITMA BACKPROPAGATION DATA UJI
+hasil_uji = sim(netl, data_uji);
+hasil_uji
